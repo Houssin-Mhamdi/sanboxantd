@@ -14,13 +14,17 @@ import {
   Row,
   Select,
   Tooltip,
+  Form
 } from "antd";
+
 export default function App() {
   const [loading, setLoading] = useState(false);
   const [inter, setInter] = useState('');
       console.log("clicked me",inter);
   
-  
+  const onFinish = (e)=>{
+    console.log(e)
+  }
   const { Option } = Select;
   const options = [
     {
@@ -129,6 +133,19 @@ export default function App() {
        <div>
          {gamesfiled.map((item)=><p>{item}</p>)}
        </div>
+       <Form onFinish={onFinish}>
+         <Form.Item label="User name" name='username'>
+           <Input placeholder='Username' required></Input>
+         </Form.Item>
+         
+         <Form.Item label="Password" name='password'>
+           <Input.Password placeholder='Password' required></Input.Password>
+         </Form.Item>
+         
+          <Form.Item>
+          <Button type='primary' htmlType='Submit'>Submit</Button>
+         </Form.Item>
+       </Form>
       <Button
         type="primary"
         onClick={handleClick}
