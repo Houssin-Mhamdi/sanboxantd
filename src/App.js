@@ -19,7 +19,8 @@ export default function App() {
   const [loading, setLoading] = useState(false);
   const [inter, setInter] = useState('');
       console.log("clicked me",inter);
-
+  
+  
   const { Option } = Select;
   const options = [
     {
@@ -55,6 +56,9 @@ export default function App() {
       ],
     },
   ];
+  const games = ['forest','gta','forsa','need for speed','good of war']
+  const  [gamesfiled,setGamesFiled] = useState([])
+  console.log(gamesfiled)
   const handleClick = () => {
     console.log("clicked me");
     setLoading(true);
@@ -115,7 +119,16 @@ export default function App() {
       <Cascader style={{ width: '70%' }} options={options} placeholder="Select Address" />
     </Input.Group>
       {/* forminput FINISH*/}
-
+      <h4>what is your favorit game</h4>
+      
+      <Input.Group compact>
+      <Select allowClear mode="multiple" style={{ width: '30%' }} defaultValue="Home" onChange={(e)=> setGamesFiled(e)}>
+          {  games.map((game ,index)=> <Select.Option  value={game} key={index}>{game}</Select.Option>)}
+      </Select>
+       </Input.Group>
+       <div>
+         {gamesfiled.map((item)=><p>{item}</p>)}
+       </div>
       <Button
         type="primary"
         onClick={handleClick}
